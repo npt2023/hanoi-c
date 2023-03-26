@@ -27,4 +27,13 @@ typedef struct {
 
 void initialize_problem(tote_t ** problem, int num_disks);
 
+/* Write a function that destroys the contents of the hanoi 
+ * array. It takes the first element in the array and walks
+ * it, freeing each stack using the pop() function.
+ * It then frees each array element using it's address
+ *
+ */
+
+void destroy_problem(tote_t * problem);
+
 #endif

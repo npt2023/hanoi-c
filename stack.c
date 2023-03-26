@@ -22,9 +22,17 @@ void push(tote_t * tote, int width)
 }
 
 int pop(tote_t * tote) {
+    int returnVal;
     if(tote->height == 0) {
         printf("Error: Stack underflow\n");
         exit(EXIT_FAILURE);
     }
-    return tote->stack[--tote->height];
+    returnVal = tote->stack[--tote->height];
+
+    /* Shrink the memory allocated for the stack) */
+
+    ASSERT(tote->stack = realloc(tote->stack, sizeof(int) * tote->height+1))
+    return returnVal;
+
 }
+

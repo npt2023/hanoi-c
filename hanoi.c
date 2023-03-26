@@ -44,6 +44,34 @@ tote_t hanoi_problem[3] = {
 
 #include "stack.h"
 
+
+
+int main(void)
+{
+    int i;
+    /* Create an array of three tote structures */
+    tote_t * hanoi_problem; 
+    initialize_problem(&hanoi_problem, 3);
+
+    /* Test to see if the function worked */
+    /* Do the following: Print the height of each tote structure */
+
+    for(i = 0; i < 3; i++) {
+        printf("%4d", hanoi_problem[i].height);
+    }
+
+    printf("\n");
+    printf("\n\n");
+    /* Print the contents of the stack */
+    for(i = 0; i < 3; i++) {
+        printf("%4d\n", pop(&hanoi_problem[0]));
+    }
+
+    destroy_problem(hanoi_problem);
+
+}
+
+
 /* void initialize_problem(tote_t * problem, int num_disks)
  *
  * Initialize the Hanoi problem set. 
@@ -78,11 +106,35 @@ void initialize_problem(tote_t ** problem, int num_disks)
         tote_ptr[i].height = 0;
     }
     
-}
-
-
-int main(void)
-{
+    /* push num_disks onto the stack */
     
+    for(i = 0; i < num_disks; i++) {
+        push(tote_ptr, num_disks - i);
+    }     
 }
 
+/* Write a function that destroys the contents of the hanoi 
+ * array. It takes the first element in the array and walks
+ * it, freeing each stack using the pop() function.
+ * It then frees each array element using it's address
+ *
+ */
+
+void destroy_problem(tote_t * problem) {
+    int i, j;
+
+    /* Free each stack */
+    
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < problem[i].height; j++) {
+            pop(&problem[i]);
+        }
+    }
+
+    /* Free the pointer */
+    /* NOTE: You can only free a pointer allocated by malloc
+     * due to heaps. You can't free a block of memory within
+     * something bigger allocated by malloc */
+
+    free(problem);
+}
