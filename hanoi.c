@@ -63,9 +63,6 @@ int main(void)
 /* The function poppush(tote_t * src, tote_t * dst) should be used
  * to facilitate moving the top disc to another tote */
 
-/* The return value hanoi_problem should be 1 if it pushed a tote
- * or 0 if it didn't */
-
 #define TOT(x) (&hanoi_problem[(x)])
 
 int h(int srcIndex, int height)

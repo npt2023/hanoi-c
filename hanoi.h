@@ -12,23 +12,6 @@
     exit(EXIT_FAILURE); \
 }
 
-#define MAX(x, y, z) ( \
-       (x) > (y) && (x) > (z) ? (x) : \
-       (y) > (x) && (y) > (z) ? (y) : \
-       (z))
-
-#define LEAST(x, y, z) ( \
-      (x) < (y) && (x) < (z) ? (x) : \
-      (y) < (x) && (y) < (z) ? (y) : \
-      (z))
-
-#define MEDIAN(x, y, z) ( \
-       (x) > (y) && (y) > (z) ? (y) : \
-       (x) > (z) && (z) > (y) ? (z) : \
-       (y) > (x) && (x) > (z) ? (x) : \
-       (y) > (z) && (z) > (x) ? (z) : \
-       (z))
-
 /* Implement the hanoi problem using an array of 
  * three tote data structures. Each tote should
  * contain the number of disks stored in it,
